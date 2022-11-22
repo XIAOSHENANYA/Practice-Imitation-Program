@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            width: 70%;
+            height: 100%;
+            background-color: blue;
+            margin: 50px auto 0;
+            position: relative;
+
+        }
+
+        #result {
+            text-align: right;
+
+        }
+
+        input {
+            width: 80%;
+            height: 100%;
+
+        }
+    </style>
+</head>
+
+<body bgcolor="black" align="center">
+    <div align="center">
+        <h1><input width="80%" height="20%" type="文本框" id="result"></h1>
+        <div>
+            <table width="100%" height="80%" align="center" id="box">
+                <tr align="center">
+                    <td>
+                        <input type="button" value="7" onclick="num">
+                    </td>
+                    <td>
+                        <input type="button" value="8">
+                    </td>
+                    <td>
+                        <input type="button" value="9">
+                    </td>
+                    <td>
+                        <input type="button" value="+">
+                    </td>
+
+                </tr>
+                <tr width="20%" align="center">
+                    <td>
+                        <input type="button" value="4">
+                    </td>
+                    <td>
+                        <input type="button" value="5">
+                    </td>
+                    <td>
+                        <input type="button" value="6">
+                    </td>
+                    <td>
+                        <input type="button" value="-">
+                    </td>
+
+                </tr>
+                <tr width="20%" align="center">
+                    <td>
+                        <input type="button" value="1">
+                    </td>
+                    <td>
+                        <input type="button" value="2">
+                    </td>
+                    <td>
+                        <input type="button" value="3">
+                    </td>
+                    <td>
+                        <input type="button" value="*">
+                    </td>
+
+                </tr>
+                <tr width="20%" align="center">
+                    <td>
+                        <input type="button" value="0">
+                    </td>
+                    <td>
+                        <input type="button" value="C">
+                    </td>
+                    <td>
+                        <input type="button" value="=">
+                    </td>
+                    <td>
+                        <input type="button" value="/">
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        var num1 = 0;
+        var num2;
+        var isResult = 0;
+        var operation="";
+        function Doinput(n) {
+            var result = document.getElementById("result");
+
+ 
+            
+            switch (n) {
+                case "=":
+                    console.log(num1,result.value,operation);
+                    result.value = calvalue(parseInt(num1), parseInt(result.value), operation);
+                    break;
+                case "+":
+
+                case "-":
+
+                case "*":
+
+                case "/":
+                    num1 = result.value;
+                    result.value = "";
+                    operation = n;
+
+                    break;
+                case "C":
+                    result.value = "";
+                    break;
+                default:
+                    result.value = result.value + n;
+                    break;
+            }
+        }
+        var i = 0;
+        onload = function () {
+            var box = document.getElementById("box");
+            var inputs = box.getElementsByTagName("input");
+            for (i = 0; i < inputs.length; i++) {
+                inputs[i].onclick = function () {
+                    Doinput(this.value);
+                };
+            }
+        }
+
+
+
+            function calvalue(num, result, operation) {
+                var isResult = 0;
+                switch (operation) {
+                    case "+":
+                        isResult = num + result;
+                        break;
+                    case "-":
+                        isResult=num-result;
+                        break;
+                    case "*":
+                        isResult = num * result;
+                        break;
+                    case "/":
+                        isResult=num/result;
+                        break;
+                }
+                return isResult;
+            }
+        
+
+    </script>
+</body>
+
+</html>
